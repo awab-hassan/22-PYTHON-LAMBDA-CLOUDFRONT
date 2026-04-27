@@ -86,10 +86,10 @@ Invoke:
 
 ```bash
 curl -X POST "$LAMBDA_URL" -H 'content-type: application/json' \
-     -d '{"action":"add","path_pattern":"/api/creator/*"}'
+     -d '{"action":"add","path_pattern":"/api/member/*"}'
 
 curl -X POST "$LAMBDA_URL" -H 'content-type: application/json' \
-     -d '{"action":"remove","path_pattern":"/api/creator/*"}'
+     -d '{"action":"remove","path_pattern":"/api/member/*"}'
 ```
 
 ## Teardown
