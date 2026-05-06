@@ -2,24 +2,8 @@
 
 A Python 3.12 Lambda (provisioned via Terraform) that dynamically manages CloudFront cache behaviors and issues path-pattern invalidations through a single HTTPS endpoint. Lets the application layer add or remove per-path caching rules without manual distribution edits or a release.
 
-## How It Works
-
-```
-Client
-   |
-   | POST { action: "add" | "remove", path_pattern: "/api/foo/*" }
-   v
-Lambda Function URL
-   |
-   v
-cache-manager Lambda (Python 3.12, boto3)
-   |
-   +-- add:    GetDistributionConfig -> patch CacheBehaviors -> UpdateDistribution
-   +-- remove: CreateInvalidation    -> GetDistributionConfig -> drop behavior -> UpdateDistribution
-   |
-   v
-CloudFront distribution
-```
+## Architecture
+![Architecture Diagram](./architecture.png)
 
 ### `action = "add"`
 
